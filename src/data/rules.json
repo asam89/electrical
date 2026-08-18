@@ -1,0 +1,122 @@
+[
+  {
+    "id": "R-01",
+    "title": "Breaker rating vs. conductor ampacity",
+    "citation": "CEC Rule 14-104 / Table 2 [PLACEHOLDER — verify actual clause]",
+    "category": "Overcurrent protection",
+    "requirement": "Each branch circuit overcurrent device rating must not exceed the allowable ampacity of the conductor it protects (with the standard next-size-up allowances).",
+    "appliesTo": "Panel schedules, circuit tables"
+  },
+  {
+    "id": "R-02",
+    "title": "Continuous load sizing allowance",
+    "citation": "CEC Rule 8-104 [PLACEHOLDER — verify actual clause]",
+    "category": "Load calculation",
+    "requirement": "Conductors and overcurrent devices serving continuous loads must be sized for at least 125% of the continuous load current.",
+    "appliesTo": "Load calculations"
+  },
+  {
+    "id": "R-03",
+    "title": "Service/feeder load calculation present",
+    "citation": "CEC Section 8 [PLACEHOLDER — verify actual clause]",
+    "category": "Load calculation",
+    "requirement": "The submission must include a calculated load for the service or feeder showing the demand used to select the service size.",
+    "appliesTo": "Load calculations, single-line diagram"
+  },
+  {
+    "id": "R-04",
+    "title": "Service size adequate for calculated load",
+    "citation": "CEC Rule 8-200 / 8-202 [PLACEHOLDER — verify actual clause]",
+    "category": "Load calculation",
+    "requirement": "The rated ampacity of the service or feeder must be equal to or greater than the calculated demand load.",
+    "appliesTo": "Load calculations, panel ratings"
+  },
+  {
+    "id": "R-05",
+    "title": "Bonding conductor sizing and presence",
+    "citation": "CEC Rule 10-614 / Table 16 [PLACEHOLDER — verify actual clause]",
+    "category": "Bonding and grounding",
+    "requirement": "A bonding conductor must be shown for each feeder/branch circuit and sized from the rating of the largest overcurrent device in the run.",
+    "appliesTo": "Panel schedules, details"
+  },
+  {
+    "id": "R-06",
+    "title": "Grounding electrode / system grounding detail",
+    "citation": "CEC Rule 10-102 / 10-204 [PLACEHOLDER — verify actual clause]",
+    "category": "Bonding and grounding",
+    "requirement": "The submission must include a grounding detail identifying the grounding electrode and the grounding conductor size.",
+    "appliesTo": "Details, single-line diagram"
+  },
+  {
+    "id": "R-07",
+    "title": "Working space in front of equipment",
+    "citation": "CEC Rule 2-308 [PLACEHOLDER — verify actual clause]",
+    "category": "Clearances",
+    "requirement": "A minimum 1 m working space must be shown in front of panelboards and other equipment likely to require examination while energized.",
+    "appliesTo": "Floor plans, panel location notes"
+  },
+  {
+    "id": "R-08",
+    "title": "Panelboard not installed in prohibited location",
+    "citation": "CEC Rule 26-402 [PLACEHOLDER — verify actual clause]",
+    "category": "Clearances",
+    "requirement": "Panelboards must not be located in bathrooms, clothes closets, stairways or similar restricted locations.",
+    "appliesTo": "Floor plans, panel location notes"
+  },
+  {
+    "id": "R-09",
+    "title": "Arc-flash / shock hazard labelling",
+    "citation": "CSA Z462 / CEC Rule 2-306 [PLACEHOLDER — verify actual clause]",
+    "category": "Labelling",
+    "requirement": "Equipment likely to be worked on while energized must be identified with an arc-flash and shock hazard warning label.",
+    "appliesTo": "Specifications, equipment schedules"
+  },
+  {
+    "id": "R-10",
+    "title": "Circuit directory / panel schedule legibility",
+    "citation": "CEC Rule 2-100 / 26-604 [PLACEHOLDER — verify actual clause]",
+    "category": "Labelling",
+    "requirement": "Each panelboard must have a legible circuit directory identifying the load served by every circuit.",
+    "appliesTo": "Panel schedules"
+  },
+  {
+    "id": "R-11",
+    "title": "GFCI protection for wet/damp and outdoor receptacles",
+    "citation": "CEC Rule 26-700(11) [PLACEHOLDER — verify actual clause]",
+    "category": "Personnel protection",
+    "requirement": "Receptacles outdoors, in bathrooms, and within 1.5 m of sinks must be GFCI (Class A) protected.",
+    "appliesTo": "Panel schedules, receptacle circuits"
+  },
+  {
+    "id": "R-12",
+    "title": "AFCI protection for dwelling branch circuits",
+    "citation": "CEC Rule 26-658 [PLACEHOLDER — verify actual clause]",
+    "category": "Personnel protection",
+    "requirement": "Branch circuits supplying receptacles in dwelling units must have arc-fault protection unless a listed exception applies.",
+    "appliesTo": "Panel schedules, receptacle circuits"
+  },
+  {
+    "id": "R-13",
+    "title": "Overcurrent device interrupting rating vs. available fault current",
+    "citation": "CEC Rule 14-012 [PLACEHOLDER — verify actual clause]",
+    "category": "Overcurrent protection",
+    "requirement": "The interrupting rating of overcurrent devices must be at least the available fault current at the point of installation, and the available fault current must be stated.",
+    "appliesTo": "Single-line diagram, equipment schedules"
+  },
+  {
+    "id": "R-14",
+    "title": "Disconnecting means identified and accessible",
+    "citation": "CEC Rule 14-414 / 26-600 [PLACEHOLDER — verify actual clause]",
+    "category": "Equipment",
+    "requirement": "A readily accessible disconnecting means must be shown and identified for the service and for each piece of fixed equipment.",
+    "appliesTo": "Single-line diagram, equipment schedules"
+  },
+  {
+    "id": "R-15",
+    "title": "Equipment certification / approval marking",
+    "citation": "CEC Rule 2-024 [PLACEHOLDER — verify actual clause]",
+    "category": "Equipment",
+    "requirement": "All electrical equipment shown must be certified/approved for use in Canada, with the certification mark or special-inspection path identified.",
+    "appliesTo": "Specifications, equipment schedules"
+  }
+]
