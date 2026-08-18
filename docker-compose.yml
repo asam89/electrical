@@ -1,0 +1,49 @@
+# Electrical Safety Approval Assistant (POC).
+#
+#   cp .env.example .env   # then fill ANTHROPIC_API_KEY
+#   docker compose up -d --build
+#
+# Both services bind to loopback only; Nginx on the host terminates TLS and
+# reverse-proxies to APP_PORT. Ports default to the values agreed for the OCI VM
+# (3004 / 5436) so nothing collides with the existing services there.
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: electrical-poc-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-electrical_poc}
+    ports:
+      - "127.0.0.1:${DB_PORT:-5436}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-electrical_poc}"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  app:
+    build:
+      context: .
+    container_name: electrical-poc-app
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@db:5432/${POSTGRES_DB:-electrical_poc}?schema=public
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:?ANTHROPIC_API_KEY must be set in .env}
+      ANTHROPIC_MODEL: ${ANTHROPIC_MODEL:-claude-sonnet-4-6}
+      REVIEWING_ENGINEER: ${REVIEWING_ENGINEER:-Reviewing Engineer, P.Eng.}
+      UPLOAD_DIR: /data/uploads
+    ports:
+      - "127.0.0.1:${APP_PORT:-3004}:3000"
+    volumes:
+      - uploads:/data
+
+volumes:
+  pgdata:
+  uploads:

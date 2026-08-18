@@ -1,0 +1,83 @@
+// POC schema: submissions, per-rule findings, reviewer decisions and generated letters.
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum SubmissionStatus {
+  PENDING_REVIEW
+  DEFICIENCIES_FOUND
+  RESUBMISSION_REQUESTED
+  APPROVED
+}
+
+enum FindingStatus {
+  PASS
+  FAIL
+  INSUFFICIENT_DATA
+}
+
+enum ReviewerDecision {
+  PENDING
+  CONFIRMED
+  FALSE_POSITIVE
+  WAIVED
+}
+
+enum LetterType {
+  APPROVAL
+  DEFICIENCY
+}
+
+model Submission {
+  id             String           @id @default(cuid())
+  projectName    String
+  submitterName  String
+  submissionDate DateTime
+  description    String           @default("")
+  fileName       String
+  fileMimeType   String
+  storedFileName String
+  status         SubmissionStatus @default(PENDING_REVIEW)
+  extraction     Json?
+  extractionNote String?
+  analysisNote   String?
+  analyzedAt     DateTime?
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  findings       Finding[]
+  letters        Letter[]
+}
+
+model Finding {
+  id           String           @id @default(cuid())
+  submissionId String
+  submission   Submission       @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+  ruleId       String
+  ruleTitle    String
+  ruleCitation String
+  status       FindingStatus
+  explanation  String
+  evidence     String           @default("")
+  decision     ReviewerDecision @default(PENDING)
+  decisionNote String           @default("")
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+
+  @@index([submissionId])
+}
+
+model Letter {
+  id           String     @id @default(cuid())
+  submissionId String
+  submission   Submission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+  type         LetterType
+  body         String
+  createdAt    DateTime   @default(now())
+
+  @@index([submissionId])
+}
